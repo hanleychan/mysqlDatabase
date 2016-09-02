@@ -18,9 +18,8 @@ class MySQLDatabase
     public function openConnection($host, $dbName, $port, $user, $password)
     {
         try {
-            $this->connection = new PDO('mysql:host='.$host.';dbname='.$dbName.';port='.$port, $user, $password);
+            $this->connection = new PDO('mysql:host='.$host.';dbname='.$dbName.';port='.$port.';charset=utf8', $user, $password);
             $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $this->connection->exec("SET NAMES 'utf8'");
         } catch (Exception $e) {
             die('Database connection failed');
         }
